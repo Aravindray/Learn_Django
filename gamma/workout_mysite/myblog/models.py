@@ -2,6 +2,10 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 
+class PublishedManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(status = Post.Status.PUBLISHED)
+
 class Post(models.Model):
 
     class Status(models.TextChoices):
@@ -9,6 +13,9 @@ class Post(models.Model):
         # names = values, labels - Format (check out workout_demo.py file for more info)
         DRAFT = 'DF', 'Draft',
         PUBLISHED = 'PB', 'Published'
+
+    objects = models.Manager()
+    published = PublishedManager()
 
     title = models.CharField(max_length=250)
     slug = models.SlugField(max_length=250)
