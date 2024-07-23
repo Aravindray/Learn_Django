@@ -48,6 +48,26 @@ Post.objects.filter('condition 1', 'condition 2')
 or
 Post.objects.filter('condition 1').filter('condition 2')
 
+# Exclude
+
+Return all the output except included in the except function
+
+Post.objects.filter('condition 1').exclude('')
+
+Post.objects.all().exclude(title__startswith = 'Wh')
+
+# Ordering - order_by
+
+Return result either ascending or descending order (-)
+
+Post.objects.order_by('title')
+Post.objects.order_by('-title')
+
 # Delete
+
+Select the post and delete it with delete()
+
+post = Post.objects.get(id=6)
+post.delete()
 
 '''
