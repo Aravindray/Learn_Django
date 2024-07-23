@@ -5,6 +5,8 @@ from django.utils import timezone
 class Post(models.Model):
 
     class Status(models.TextChoices):
+        # choices will list the values and labels set - [(values, labels), ...]
+        # names = values, labels - Format (check out workout_demo.py file for more info)
         DRAFT = 'DF', 'Draft',
         PUBLISHED = 'PB', 'Published'
 
