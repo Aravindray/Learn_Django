@@ -123,4 +123,6 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Email server configuration
+# Email server configuration - Not able to user because my django version is not compatible
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
