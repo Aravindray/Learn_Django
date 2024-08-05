@@ -7,4 +7,14 @@
     <p>Published at {{ post.publish }} by {{ post.author }} </p>
     <p>{{ post.body }}</p>
     <p><a href="{% url 'blog:post_share' post.id %}">Share this post</a></p>
+    {% with comments.count as total_comment %}
+        <p>{{ total_comment}} comment{{ total_comment|pluralize }} </p>
+    {% endwith %}
+    {% for comment in comments %}
+        <p>Commented at {{ comment.updated }} by {{ comment.name }} </p>
+        <p> {{ comment.body|linebreaks }} </p>
+    {% empty %}
+        <p>There is no comment</p>
+    {% endfor %}
+    {% include 'blog/post/includes/comment_template.html' %}
 {% endblock %}
